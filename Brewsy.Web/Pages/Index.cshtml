@@ -1,0 +1,26 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to the Brewsy Marketplace</h1>
+    <p>Where you can sell your Beers the easy way.</p>
+</div>
+<div class="card-columns">
+    @foreach (var beer in Model.Beers)
+    {
+        <div class="card">
+            <div class="d-flex justify-content-around p-2">
+                <img src="@beer.ImageUrl" style="max-height: 295px" class="img-fluid" alt="...">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@beer.Name</h5>
+                <p class="card-text">@beer.Description</p>
+                <small class="text-muted">By: @beer.User.UserName</small>
+                <a class="btn btn-primary" asp-page="/beers/checkout" asp-route-beerId="@beer.Id">Buy Now for CHF @beer.Price.ToString("N2")</a>
+            </div>
+        </div>
+    }
+</div>

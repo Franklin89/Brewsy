@@ -1,0 +1,51 @@
+﻿@page
+@model Brewsy.Web.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container">
+    <h2>Create</h2>
+
+    <form asp-action="Create">
+        <div class="form-horizontal">
+            <h4>Beer</h4>
+            <hr />
+            <div class="form-group">
+                <label asp-for="Beer.Name" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="Beer.Name" class="form-control" />
+                    <span asp-validation-for="Beer.Name" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Beer.Description" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="Beer.Description" class="form-control" />
+                    <span asp-validation-for="Beer.Description" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Beer.ImageUrl" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="Beer.ImageUrl" class="form-control" />
+                    <span asp-validation-for="Beer.ImageUrl" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Beer.Price" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="Beer.Price" class="form-control" />
+                    <span asp-validation-for="Beer.Price" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+

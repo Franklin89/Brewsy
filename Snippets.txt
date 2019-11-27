@@ -1,0 +1,5 @@
+dotnet ef migrations add --project .\Brewsy.Data\Brewsy.Data.csproj --output-dir Migrations "{MigrationName}"
+
+dotnet ef database update --project .\Brewsy.Data\Brewsy.Data.csproj
+
+dotnet ef database drop --project .\Brewsy.Data\Brewsy.Data.csproj

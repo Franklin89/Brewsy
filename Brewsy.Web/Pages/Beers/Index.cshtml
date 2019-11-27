@@ -1,0 +1,37 @@
+﻿@page
+@model Brewsy.Web.IndexModel
+
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+
+@{
+    ViewData["Title"] = "My Beers";
+}
+
+@if (!Model.HasStripeAccount)
+{
+    <div class="container">
+        <h2>Sell</h2>
+        <p>To sell beers on Brewsy you need a Stripe account. Click the link below to get started.</p>
+        <a href="@($"https://connect.stripe.com/express/oauth/authorize?response_type=code&client_id={Configuration["Stripe:ClientId"]}&scope=read_write")" class="btn btn-primary"><i class="fab fa-stripe-s mr-2"></i>Connect to Stripe</a>
+    </div>
+}
+else
+{
+    <a class="btn btn-primary" asp-page="/beers/create">Create New Beer</a>
+    <div class="card-columns mt-4">
+        @foreach (var beer in Model.Beers)
+        {
+            <div class="card">
+                <div class="d-flex justify-content-around p-2">
+                    <img src="@beer.ImageUrl" style="max-height: 295px" class="img-fluid" alt="...">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">@beer.Name</h5>
+                    <p class="card-text">@beer.Description</p>
+                    <h5>CHF @beer.Price.ToString("N2")</h5>
+                    <a class="btn btn-outline-danger"><i class="fa fa-trash"></i></a>
+                </div>
+            </div>
+        }
+    </div>
+}
